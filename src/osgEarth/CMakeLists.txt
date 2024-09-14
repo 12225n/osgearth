@@ -1,5 +1,7 @@
 # osgEarth Core Library
 
+set(CURL_INCLUDE_DIR D:/chenxi_Tests/Requirements/gdal_x64_windows/vcpkg-export-20240912-201202/installed/x64-windows/include/curl)
+
 IF(OSGEARTH_BUILD_SHARED_LIBS)
     ADD_DEFINITIONS(-DOSGEARTH_LIBRARY)
 ELSE ()
@@ -957,6 +959,13 @@ IF(FILEGDB_FOUND)
     add_definitions(-DOSGEARTH_HAVE_FILEGDB)
     include_directories(${FILEGDB_INCLUDE_DIR})
     LINK_WITH_VARIABLES(${LIB_NAME} FILEGDB_LIBRARY)
+ENDIF()
+
+# ABSL FileGeodatabase?
+IF(ABSL_FOUND)
+    add_definitions(-DOSGEARTH_HAVE_ABSL)
+    include_directories(${ABSL_INCLUDE_DIR})
+    LINK_WITH_VARIABLES(${LIB_NAME} ABSL_LIBRARY)
 ENDIF()
 
 IF(BLEND2D_FOUND)
